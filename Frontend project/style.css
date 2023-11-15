@@ -1,0 +1,574 @@
+        /* 폰트 */
+        @font-face {
+            font-family: 'Cafe24Moyamoya-Face-v1.0';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/Cafe24Moyamoya-Face-v1.0.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 한국기계연구원원체 */
+        /* font-family: "KIMM_Bold"; */
+
+        /* 전주공예고딕체 */
+        /* font-family: "JeonjuCraftGoR"; */
+
+
+        /* 한국기계연구원체 */
+        @font-face {
+            font-family: "KIMM_Bold";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2") format("woff2");
+            font-weight: 300;
+            font-style: normal;
+        }
+
+
+        /* 전주공예 고딕체 */
+        @font-face {
+            font-family: "JeonjuCraftGoR";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/JeonjuCraftGoR.woff2") format("woff2");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        /* 전체 배경 설정 */
+        #container {
+            width: 100%;
+            height: 100vh;
+            /* 배경 설정 */
+            background: linear-gradient(rgb(138, 212, 241, 0.3), rgba(81, 81, 81, 0.2)),
+                url(./img/backgroundcity.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            backface-visibility: hidden;
+            overflow: hidden;
+            /* 폰트 */
+            /* font-family: 'Cafe24Moyamoya-Face-v1.0'; */
+        }
+
+        /* 고정 헤더 */
+        #navi {
+            width: 100%;
+            height: 50px;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.28);
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            background-color: rgb(138, 212, 241, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+
+        /* 헤더 메뉴 */
+        #navi a {
+            text-decoration: none;
+            padding: 0 4%;
+            color: white;
+            font-size: 17px;
+        }
+
+        /* 메뉴 호버 */
+        #navi a:hover {
+            text-shadow: midnightblue 1px 0 15px;
+            color: midnightblue;
+        }
+
+        .navicon{
+            display: none;
+        }
+
+        /* 헤더 제외 전체화면 */
+        #main {
+            color: white;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+
+        /* 로그인-아웃 button */
+        #login {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 50px;
+            text-align: right;
+        }
+
+        #login>button {
+            background-color: white;
+            color: rgb(138, 212, 241);
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 0 30px;
+            margin-right: 3vw;
+            margin-top: 15px;
+            border-radius: 40px;
+        }
+
+        #login>button:hover {
+            color: white;
+            background-color: rgb(138, 212, 241);
+        }
+
+        /* 텍스트 전체 div */
+        #maincontent {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 텍스트 div */
+        #mainName {
+            width: 100%;
+            position: absolute;
+            height: 80px;
+            line-height: 80px;
+            top: 40vh;
+            z-index: 90;
+        }
+
+        /* 웹 사이트명 */
+        #head {
+            display: inline-block;
+            text-shadow: black 1px 0 10px;
+            font-size: 12vh;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            /* left: 14vw; */
+            /* font-family: "Cafe24Moyamoya-Face-v1.0"; */
+            font-family: "KIMM_Bold";
+            /* font-family: "JeonjuCraftGoR"; */
+        }
+
+        /* 웹사이트명 아래 문구 */
+        #comment {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 80px;
+            position: absolute;
+            text-align: center;
+            font-size: 3vh;
+            width: 100%;
+            /* left: 18vw; */
+            top: 11vh;
+            opacity: 0.7;
+            animation-name: comment;
+            animation-duration: 2s;
+            animation-iteration-count: 1;
+        }
+
+        /* zero waste 아이콘 */
+        #zerowaste {
+            position: relative;
+            width: 130px;
+            margin-left: 20px;
+        }
+
+        @keyframes comment {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0.6;
+            }
+        }
+
+        /* 로그인 창 (모달)*/
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            align-self: flex-end;
+            justify-self: flex-start;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #loginform {
+            width: 40vw;
+            height: 400px;
+            max-width: 30vw;
+            min-width: 280px;
+            min-height: 400px;
+            max-height: 400px;
+            background-color: rgba(240, 248, 255, 0.9);
+            color: black;
+            margin-top: 53px;   
+            padding: 20px;
+            border-radius: 40px;
+            position: absolute;
+            top: 20vh;
+            right: 34vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* padding-top: 50px; */
+        }
+
+        /* 로그인 폼 */
+        #loginicon {
+            width: 100px;
+            height: 100px;
+            max-width: 150px;
+            max-height: 150px;
+            min-width: 100px;
+            min-height: 100px;
+            border-radius: 50%;
+            background-color: rgb(138, 212, 241);
+            position: absolute;
+            top: -50px;
+            z-index: 3;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        #loginicon i {
+            color: white;
+            font-size: 50px;
+        }
+
+
+
+        #loginid,
+        #loginpw {
+            background-color: white;
+            border: none;
+            padding: 12px 30px;
+            margin: 8px 0;
+            width: 70%;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #loginid:focus,
+        #loginpw:focus {
+            background-color: whitesmoke;
+            border: none;
+            padding: 12px 30px;
+            margin: 8px 0;
+            width: 70%;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #snsbox {
+            width: 70%;
+            height: 40px;
+            display: flex;
+            justify-content: space-evenly;
+
+        }
+
+        .sns {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .sns1 {
+            background-image: url("./img/github.png");
+            background-size: cover;
+        }
+
+        .sns2 {
+            background-image: url("./img/google.png");
+            background-size: cover;
+        }
+
+        .sns3 {
+            background-image: url("./img/facebook.png");
+            background-size: cover;
+        }
+
+        #loginbtnbottom {
+            background-color: midnightblue;
+            color: white;
+            border: none;
+            margin-top: 30px;
+            padding: 8px 60px;
+            border-radius: 5px;
+        }
+
+        #loginbtnbottom:hover {
+            color: midnightblue;
+            /* box-shadow: black 1px 0 6px; */
+            background-color: white;
+            border: none;
+            padding: 8px 60px;
+            border-radius: 5px;
+        }
+
+
+        /* 미디어 쿼리 태블릿 */
+        @media screen and (max-width:768px) {
+            #main {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            #mainName {
+                width: 100%;
+                position: absolute;
+                height: 100px;
+                line-height: 80px;
+                text-align: center;
+                top: 40vh;
+                z-index: 90;
+            }
+
+            #head {
+                display: inline-block;
+                text-shadow: black 1px 0 10px;
+                width: 100%;
+                text-align: center;
+                font-size: 10vw;
+                right: 0;
+                font-family: "KIMM_Bold";
+            }
+
+            #comment {
+                display: inline-block;
+                font-size: 20px;
+                line-height: 80px;
+                position: absolute;
+                text-align: center;
+                font-size: 3vw;
+                width: 100%;
+                top: 11vh;
+                right: 0;
+                opacity: 0.7;
+                animation-name: comment;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+            }
+
+            #zerowaste {
+                position: relative;
+                width: 17vw;
+                margin-left: 20px;
+            }
+
+            #navy {
+                justify-content: space-between;
+            }
+
+            #navi a {
+                text-decoration: none;
+                font-size: 80%;
+                /* padding: 0 7vw; */
+                color: white;
+            }
+
+
+            /* 로그인 폼 */
+            #loginicon {
+                width: 100px;
+                height: 100px;
+                max-width: 150px;
+                max-height: 150px;
+                min-width: 100px;
+                min-height: 100px;
+                border-radius: 50%;
+                background-color: rgb(138, 212, 241);
+                position: absolute;
+                top: -50px;
+                z-index: 3;
+                text-align: center;
+                line-height: 100px;
+            }
+    
+            #loginicon i {
+                color: white;
+                font-size: 50px;
+            }
+
+            #loginform {
+                width: 40vw;
+                height: 60vh;
+                max-width: 30vw;
+                min-width: 280px;
+                background-color: rgba(240, 248, 255, 0.9);
+                color: black;
+                margin-top: 53px;
+                padding: 20px;
+                border-radius: 40px;
+                position: absolute;
+                top: 20vh;
+                right: calc(50vw - 140px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            form {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #login {
+                width: 100%;
+                height: 40px;
+                position: fixed;
+                margin-top: 0px;
+                top : 500px;
+                text-align: center;
+            }
+
+            #login>button {
+                color: rgb(138, 212, 241);
+                background-color: white;
+                border: none;
+                font-size: 16px;
+                font-weight: 500;
+                padding: 0 60px;
+                margin-right: 0;
+                margin-top: 0;
+                border-radius: 40px;
+            }
+        }
+
+        /* 미디어쿼리 모바일 */
+        @media screen and (max-width : 470px) {
+            #mainName {
+                width: 100%;
+                position: absolute;
+                height: 100px;
+                line-height: 80px;
+                text-align: center;
+                top: 40vh;
+                z-index: 90;
+            }
+
+            #head {
+                display: inline-block;
+                text-shadow: black 1px 0 10px;
+                width: 100%;
+                text-align: center;
+                font-size: 10vw;
+                top: 13vh;
+                right: 0;
+                font-family: "KIMM_Bold";
+            }
+
+            #comment {
+                display: none;
+            }
+
+            #zerowaste {
+                position: absolute;
+                width: 40vw;
+                bottom: 10vh;
+                right: 30vw;
+            }
+
+            #loginicon {
+                line-height: 14 vh;
+            }
+
+            #loginicon i {
+                color: white;
+                font-size: 50px;
+            }
+
+            #navi a {
+                text-decoration: none;
+                font-size: 3.3vw;
+                padding: 0 3vw;
+                color: white;
+            }
+
+            #loginform {
+                width: 40vw;
+                height: 60vh;
+                min-width: 300px;
+                min-width: 280px;
+                background-color: rgba(240, 248, 255, 0.9);
+                color: black;
+                margin-top: 53px;
+                padding: 20px;
+                border-radius: 40px;
+                top: 20vh;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #login {
+                width: 100%;
+                height: 40px;
+                position: fixed;
+                margin-top: 0px;
+                top : 500px;
+                text-align: center;
+            }
+
+            #login>button {
+                color: rgb(138, 212, 241);
+                background-color: white;
+                border: none;
+                font-size: 16px;
+                font-weight: 500;
+                padding: 0 60px;
+                margin-right: 0;
+                margin-top: 0;
+                border-radius: 40px;
+            }
+
+            #navi a {
+                text-decoration: none;
+                padding: 0 8%;
+                color: white;
+                font-size: 25px;
+            }
+            .navilist{
+                display: none;
+            }
+            .navicon{
+                display: block;
+            }
+        }
