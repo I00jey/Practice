@@ -1,2 +1,2 @@
 # Practice
-Code Practice for Project
+Coding Practice
