@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mediaquery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .idcard {
+            width: calc(100vw-5px);
+            height: fit-content;
+            background-color: midnightblue;
+            border: 2px outset black;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .photo img {
+            width: 25vw;
+        }
+
+        .introduce {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            border-left: 1px solid black;
+        }
+            .name {
+                height: 40%;
+                line-height: 43px;
+            }
+
+            .content {
+                border-top: 1px solid black;
+                padding: 20px;
+            }
+
+            @media screen and (max-width:768px) {
+                .introduce {
+                    border: none;
+                }
+
+                .idcard {
+                    display: flex;
+                    flex-direction: column;
+                    background-color: skyblue;
+                }
+
+                .photo {
+                    position: absolute;
+                    align-self: flex-start;
+                }
+                .name{
+                    line-height: 18vw;
+                }
+            }
+    </style>
+</head>
+
+<body>
+    <div class="idcard">
+        <div class="item photo">
+            <img src="webbrowser.png" width="200px">
+        </div>
+        <div class="item introduce">
+            <h1 class="name">Web Browser</h1>
+            <p class="content">HTML 문서와 그림, 멀티미디어 파일등 월드 와이드 웹을 기반으로 한 인터넷의 컨텐츠를 검색 및 열람하기 위한 응용 프로그램의 총칭.세계 최초의 웹 브라우저는
+                팀 버너스리가 1990년에 NeXTSTEP용으로 Objective-C를 사용하여 개발한 WorldWideWeb이다(띄어쓰기가 없다). 해당 브라우저는 나중에 Nexus로 이름이 바뀌었다.
+                그 뒤, 크로스 플랫폼으로 된 line-mode browser가 CERN에서 개발되었으며, 1993년 '모자이크'라는 이름의 브라우저가 최초로 이미지를 바로 표시할 수 있는 기능을 넣고
+                월드 와이드 웹 붐을 타면서 큰 성공을 거두며 상용화에 성공하게 되었으며, 넷스케이프 내비게이터를 거쳐 파이어폭스로 계승되었다. 이후로 많은 웹 브라우저들이 탄생하고 점유율을 더 높이기
+                위해 치열한 전쟁을 하였고, 현재 진행 중이다. 자세한 내용은 브라우저 전쟁 문서 참고.
+                대한민국에서는 아직도 IE가 기준으로 만들어진 홈페이지가 아직 많고, 많은 금융기관 및 정부 공공기관의 보안 체계가 ActiveX로 되어 있는 곳이 많아 일본을 제외한 다른 나라보다
+                IE의 점유율이 높다. 심지어 2023년도 신규개발 공공사업에서도 여전히 IE 최적화를 최우선으로 요구하는 곳이 있다. 파이어폭스나 크롬을 쓰더라도 IE를 완전히 버릴 수는 없는 노릇.
+                그러나 그 뒤로 모바일 중심의 사용 변화, IE의 서비스 종료 예고, 액티브엑스를 탈피한 사이트의 확산, 공인인증서 폐지 등을 담은 국내법 개정 등의 영향으로 웹 브라우저의 지형도에 많은
+                변화가 일어났다. 2020년 3월 말 국내 기준, IE의 시장 점유율은 8%대로 크게 떨어진 반면, 크롬의 점유율은 데스크탑 70%, 모바일 40%로 크게 약진하였다.</p>
+        </div>
+    </div>
+</body>
+
+</html>

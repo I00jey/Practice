@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css5</title>
+    <style>
+        body{
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADJCAMAAADFPCT7AAAAY1BMVEX///8AAADk5OQbGxsiIiLo6Ojr6+snJyfu7u4rKysfHx/g4ODd3d0XFxe8vLw9PT3Dw8NEREQNDQ03NzfLy8tOTk74+PiBgYGRkZFqamqwsLBUVFQYGBimpqaamppISEhjY2MxyjZaAAADMUlEQVR4nO3dyXLiMBSFYV0HMyQMHeaEhPT7P2VDgABdATxId9L5N1heIH8l2xTeOASEEEIIIYQQQgihGvX70kfAXTHIjVxQbuSSciMXlBu5pOkoL3JBT8O8yDtxyIu8F+dF/hZnRT6IcyIfxRmRT+J8yD/ibMhncS7kC3Em5EtxHuQr8Xiawd+KS/GaaOZ/lc/i+YToLYMT+yhevm+IeuOQwbVc0Mf8c/VKRKPtYY938v4ZyL6v7fK0a0/uSh5T2nbi2eJte7WoO3LPL/nq1+mUa/KvYtfk38WeyTfEjsm3xH7JN8Vh+OSTfFscXnyS74idku+JfZLvil2S74s9kh+IHZIfif2RH4rdkR+LvZEriJ2Rq4h9kSuJXZGriT2RK4odkauK/ZAri92Qq4u9kGuInZDriH2Qa4ldkOuJPZBrih2Q64rtk2uLzZPri62TG4jDy7NlchNxKCyTG4lNk5uJLZMbig2Tm4rtkhuLzZKbi62SW4iNktuIbZJbiU2S24ktkluKDZLbiu2RW4vNkduLrZEjiI2RY4htkaOITZHjiC2RI4kNkWOJ7ZCjic2Q44mtkCOKjZBjim2Qo4pD0aFeGfH7UhRXHMoOdZSTI4sNkGOL9ZOji9WT44u1kxOIlZNTiHWTk4hVk9OINZMTiRWTU4n1kpOJ1ZLTibWSE4qVklOKdZKTilWS04o1khOLFZJTi/WRk4vVkdOLtZEZxMrIHGJdZBaxKjKPWBOZSRzKnhYylzh0tZDZxGrIfGItZEaxEjKnWAeZVayCzCvWQGYWKyBzi+XJ7GJxMr9YmiwgFiZLiGXJImJRsoxYkiwkFiRLieXIYmIxspxYiiwoFiJLimXIouLQFXioWxBNzs0+eWdfzoidXNDoz7n1hHf2DY3YV/n6rB6/sk7+SdM5+7UsKV5+0PvuWh7wkiXFK9rsP/q8ZEFxOaXh9wYvWVB8XOLATBYUD2h82uQky4lLmv68Go6TLCde0+JitCcXLPPKif/S6nK4Iz+zkOXEC9pejbnIcuLZ+cZ1iIl8esOkkhjIpbTxv5huXwghhBBCCCGEEEIIIYQQQgghhBBCCCGUpn80HRsrteSx6gAAAABJRU5ErkJggg==);
+            background-repeat: no-repeat;
+            background-size: 68%;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: skyblue;
+            position: absolute;
+            animation-name: ball;
+            animation-duration: 4s;
+            animation-delay: 0.5s;
+            animation-timing-function: ease-out;
+            animation-iteration-count: infinite;
+        }
+        @keyframes ball {
+            0%{
+                left: 17%;
+                top: 0%;
+            }
+            50%{
+                top:85%;
+            left: 56.2%;
+            }
+            100%{
+            left: 90%;
+            top: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+</body>
+</html>

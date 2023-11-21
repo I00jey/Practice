@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript 2</title>
+    <script>
+        let fruits1 = ['사과','딸기','파인애플','수박','참외','오렌지','자두','망고']
+        let fruits2 = ['수박','사과','참외','오렌지','파인애플','망고','키위']
+        let same = fruits1.filter((fruit1)=>fruits2.includes(fruit1)); 
+        console.log(same);
+
+        // 서로 겹치지 않는 것을 따로 구하기 
+        let diff = fruits1.filter((item) => !fruits2.includes(item));
+        console.log(diff);
+        let diff2 = fruits2.filter((item) => !fruits1.includes(item));
+        console.log(diff2);
+        // 서로 겹치지 않는 것을 한 배열에 저장
+        let dif =[];
+        for(i=0; i<fruits1.length;i++){
+            if(!fruits2.includes(fruits1[i])) dif.push(fruits1[i]);
+        }
+        for(i=0; i<fruits2.length;i++){
+            if(!fruits1.includes(fruits2[i])) dif.push(fruits2[i]);
+        }
+        console.log(dif);
+
+        // 리더님 풀이
+        // let same3 = [];
+        // let diff3 = [];
+        // for (let i = 0; i < fruits1.length; i++) {
+        //     if(fruits2.includes(fruits1[i])){
+        //         same3.push(fruits1[i]);
+        //     }else{
+        //         diff3.push(fruits1[i]);
+        //     }
+        // }
+        // console.log(same3);
+        // console.log(diff3);
+        
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
