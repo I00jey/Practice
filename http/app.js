@@ -24,7 +24,7 @@ const fs = require('fs');
 const server = http.createServer(function (req, res) {
     // 예외처리 -> try-catch문
     try {
-        const data = fs.readFileSync('./inde.html');
+        const data = fs.readFileSync('./index.html');
         res.writeHead(200, {'content-type': 'text/html; charset=utf8'});
         res.write(data);
         res.end();
