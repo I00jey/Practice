@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+        integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form name="formname" id="formid">
+        <input type="text" id="id" name="id"><br>
+        <input type="password" name="pw" id="pw"><br>
+        <button type="button" onclick="login()">button</button>
+    </form>
+    <div id="resultBox"></div>
+    <script>
+        // function login() {
+        //     const form = document.forms['formname'];
+        //     const resultBox = document.querySelector('#resultBox');
+        //     const data = {
+        //         id: form.id.value,
+        //         pw: form.pw.value
+        //     };
+        //     $.ajax({
+        //         url: '/ajax',
+        //         type: 'get',
+        //         data: data,
+        //         success: function (data) {
+        //             resultBox.innerHTML = `get-ajax 요청 완료!<br>아이디 : ${data.id}<br>비밀번호 : ${data.pw}`
+        //         }
+        //     })
+        // }
+        // function login() {
+        //     const form = document.forms['formname'];
+        //     const resultBox = document.querySelector('#resultBox');
+        //     const data = {
+        //         id: form.id.value,
+        //         pw: form.pw.value
+        //     };
+        //     $.ajax({
+        //         url: '/ajax',
+        //         type: 'post',
+        //         data: data,
+        //         success: function (data) {
+        //             resultBox.innerHTML = `post-ajax 요청 완료!<br>아이디 : ${data.id}<br>비밀번호 : ${data.pw}`
+        //         }
+        //     })
+        // }
+        // function login() {
+        //     const form = document.forms['formname'];
+        //     const resultBox = document.querySelector('#resultBox');
+        //     const data = {
+        //         id: form.id.value,
+        //         pw: form.pw.value
+        //     };
+        //     axios({
+        //         method: 'get',
+        //         url: '/axios',
+        //         params: data
+        //     }).then((response) => {
+        //         console.log(response.data);
+        //         resultBox.innerHTML = `Get / axios 요청 완료! <br> ${response.data.id}님의 비밀번호는 ${response.data.pw}!`;
+        //     })
+        // }
+        // async function login() {
+        //     const form = document.forms['formname'];
+        //     const resultBox = document.querySelector('#resultBox');
+        //     const data = {
+        //         id: form.id.value,
+        //         pw: form.pw.value
+        //     };
+        //     try {
+        //         const result = await axios({
+        //             method: 'post',
+        //             url: '/axios',
+        //             data: data
+        //         })
+        //         console.log(result.data);
+        //         resultBox.innerHTML = `post / axios 요청 완료! <br> ${result.data.id}님의 비밀번호는 ${result.data.pw}!`;
+        //     } catch (error) {
+        //         console.log(err);
+        //     }
+        // }
+        // function login() {
+        //     const form = document.forms['formname'];
+        //     const resultBox = document.querySelector('#resultBox');
+        //     const data = {
+        //         id: form.id.value,
+        //         pw: form.pw.value
+        //     };
+
+        //     // fetch(url, options)
+        //     fetch(`/fetch?id=${data.id}&pw=${data.pw}`, {
+        //         method: 'get'  // default값이 get (생략 가능)
+        //     }).then((response) => {
+        //         // 응답 (response) 객체로부터 JSON 포맷의 응답 전문을 자바스크립트 객체로 변환
+        //         return response.json();
+        //     }).then((data) => {
+        //         // data 변수 : 직전 then 메서드의 리던 값 = response.json()
+        //         console.log('data :', data);
+        //         resultBox.textContent = `Get / Fetch 요청 완료! ${data.id}님의 비밀번호는 ${data.pw}!`
+        //     })
+        // }
+
+        // function login() {
+        //     const form = document.forms['formname'];
+        //     const resultBox = document.querySelector('#resultBox');
+        //     const data = {
+        //         id: form.id.value,
+        //         pw: form.pw.value
+        //     };
+
+        //     // fetch(url, options)
+        //     // fetch - post 메소드 => option 객체가 반드시 필요함
+        //     // 1. method : post 지정
+        //     // 2. headers : JSON 포맷 사용 선언
+        //     // 3. body : 서버로 보낼 데이터 담기
+        //     fetch(`/fetch`, {
+        //         method: 'post',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(data)
+        //         // data : js 객체 형태
+        //         // JSON.stringfy(data) -> json 형태로 변환
+        //     }).then((response) => {
+        //         return response.json(); // json( ) 메소드도 비동기 함수, 프로미스 반환
+        //     }).then((data) => {
+        //         console.log('data :', data);
+        //         resultBox.textContent = `Post / Fetch 요청 완료! ${data.id}님의 비밀번호는 ${data.pw}!`
+        //     })
+        // }
+
+    </script>
+</body>
+
+</html>
