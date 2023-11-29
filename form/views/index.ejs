@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get & post</title>
+</head>
+
+<body>
+    <h2>get 요청</h2>
+    <form action="/login" method="get">
+        <label for="id">ID</label>
+        <input type="text" name="id" id="id" required pattern="^([0-9a-zA-Z]){4,8}$" placeholder="한글 사용 불가">
+        <label for="pw">PW</label>
+        <input type="text" name="pw" id="pw" required>
+        <button type="submit">입력</button>
+    </form>
+    <!-- <h2>post 요청</h2> -->
+    <!-- <form action="/login" method="post">
+        <label for="id">ID</label>
+        <input type="text" name="id" id="id">
+        <label for="pw">PW</label>
+        <input type="text" name="pw" id="pw">
+        <button type="submit">입력</button>
+    </form> -->
+</body>
+
+</html>
