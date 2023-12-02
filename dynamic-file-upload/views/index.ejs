@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axion dynamic file upload</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form name="dynamicForm" id="dynamicForm">
+        <input type="text" name="id" id="id"><br>
+        <input type="text" name="pw" id="pw"><br>
+        <input type="file" name="fileInput" id="fileInput"><br><br>
+        <button type="button" onclick="register()">회원가입</button>
+    </form>
+    <div>
+        <img id="resultImg" src="" alt="">
+        <p id="resultId"></p>
+        <p id="resultPw"></p>
+    </div>
+    <script>
+
+        function register() {
+            const formData = new FormData();
+            const file = document.querySelector('#fileInput');
+            const id = document.querySelector('#id');
+            const pw = document.querySelector('#pw');
+            formData.append('file', file.files[0]);
+            formData.append('id', id.value);
+            formData.append('pw', pw.value);
+
+            axios({
+                method: 'post',
+                url: '/register',
+                data: formData,
+                headers: {
+                    'Content-Type': "multipart/form-data"
+                }
+            }).then((response) => {
+                const { file, info } = response.data
+                resultImg.src = `/` + file.path
+                resultId.textContent = `${info.id}님 환영합니다.`
+                resultPw.textContent = `${info.pw}로 비밀번호가 설정되었습니다.`;
+
+            }).catch((error) => {
+                alert('🚫error가 발생했습니다🚫')
+            })
+        }
+    </script>
+</body>
+
+</html>
