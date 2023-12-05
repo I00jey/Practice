@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>axion dynamic file upload</title>
+    <!-- axios CDN -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
@@ -27,9 +28,9 @@
             const file = document.querySelector('#fileInput');
             const id = document.querySelector('#id');
             const pw = document.querySelector('#pw');
-            formData.append('file', file.files[0]);
             formData.append('id', id.value);
             formData.append('pw', pw.value);
+            formData.append('fileInput', file.files[0]);
 
             axios({
                 method: 'post',
