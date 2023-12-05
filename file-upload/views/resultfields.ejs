@@ -9,18 +9,15 @@
 
 <body>
     <% for( let i=0; i < file1.length; i++ ) { %>
-        <h2>
-            <%= data[i] %>
-        </h2>
-        <img src="<%= file1[i].path %>" alt="">
-        <% } %>
-
-            <% for( let j=0; j < file1.length; j++ ) { %>
-                <h2>
-                    <%= data[j] %>
-                </h2>
-                <img src="<%= file1[j].path %>" alt="">
-                <% } %>
+        <%= `${data[0]}번째 input의 ${file1[i].filename}` %>
+            <img src="/<%= file1[i].path %>" alt="">
+            <br>
+            <% } %>
+                <% for( let j=0; j < file2.length; j++ ) { %>
+                    <%= `${data[1]}번째 input의 ${file2[j].filename}` %>
+                        <img src="/<%= file2[j].path %>" alt="">
+                        <br>
+                        <% } %>
 </body>
 
 </html>

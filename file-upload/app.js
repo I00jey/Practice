@@ -30,7 +30,7 @@ const uploadDetail = multer({
             // console.log("filename :", path.basename(file.originalname, ext));
             // 확장자를 제외한 파일이름
             // 확장자를 붙였다 떼였다하는 이유 -> Date.now()를 넣어 파일명 중복을 없애기 위해
-            done(null, req.body.title + "_" + path.basename(file.originalname, ext) + ext);
+            done(null, path.basename(file.originalname, ext) + ext);
         }
     })
 });
@@ -61,16 +61,21 @@ app.post("/upload/array", uploadDetail.array("array"), (req, res) => {
         data: req.body
     });
 });
-app.post("/upload/fields", uploadDetail.fields([{ name: "fields1" }, { name: "fields2" }]), (req, res) => {
-    console.log(req.files);
-    console.log(req.body);
-    console.log(req.body.title);
-    res.render("resultfields", {
-        file1: req.files.fields1,
-        file2: req.files.fields2,
-        data: req.body.title
-    });
-});
+app.post(
+    "/upload/fields",
+    uploadDetail.fields([{ name: "fields1" }, { name: "fields2" }]),
+    (req, res) => {
+        console.log(req.files);
+        console.log(req.body);
+        console.log(req.body.title);
+        console.log(req.files.fields1[0].path);
+        res.render("resultfields", {
+            file1: req.files.fields1,
+            file2: req.files.fields2,
+            data: req.body.title
+        });
+    }
+);
 
 app.listen(port, function () {
     console.log(`http://localhost:${port}`);
