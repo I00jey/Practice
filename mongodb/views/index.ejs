@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mongoDB Test</title>
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        #result {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>몽고디비 CRUD</h1>
+    <form name="input_form">
+        <input type="text" id="id" placeholder="id">
+        <input type="text" id="pw" placeholder="id"><br>
+        <button type="button" onclick="create()">create</button>
+        <button type="button" onclick="findOne()">find</button>
+        <button type="button" onclick="update()">update</button>
+        <button type="button" onclick="deleteDB()">deleteDB</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        const form = document.forms['input_form']
+        const resultBox = document.getElementById("result")
+        console.log('form 가져오기 > ', form);
+        function create() {
+            axios({
+                method: "post",
+                url: "/create",
+                data: {
+                    id: form.id.value,
+                    pw: form.pw.value
+                }
+            }).then((result) => {
+                // console.log(result);
+                resultBox.textContent = "😊DB 입력 성공😊"
+            }).catch((err) => {
+                console.log('create 오류 >', err);
+            })
+        }
+
+        function findOne() {
+            axios({
+                method: "get",
+                url: "/findOne",
+                params: {
+                    id: form.id.value,
+                    pw: form.pw.value
+                }
+            }).then((result) => {
+                // console.log(result.data);
+                if (result.data) {
+                    resultBox.textContent = `검색 정보 => id : ${result.data.id} pw : ${result.data.pw}`
+                } else {
+                    resultBox.textContent = "해당하는 데이터가 없습니다"
+                }
+
+            }).catch((err) => {
+                console.log('findOne 오류 >', err);
+            })
+        }
+        function update() {
+            axios({
+                method: "patch",
+                url: '/update',
+                data: { id: form.id.value, pw: form.pw.value }
+            }).then((result) => {
+                if (result) {
+                    resultBox.textContent = `비밀번호 변경 성공 id : ${result.data.id} pw : ${result.data.pw}`
+                } else {
+                    result.textContent = "해당하는 데이터가 없습니다"
+                }
+                console.log(result.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+        function deleteDB() {
+            axios({
+                method: "delete",
+                url: '/deleteDB',
+                data: { id: form.id.value }
+            }).then((result) => {
+                console.log(result.data);
+                resultBox.textContent = `삭제 데이터 => id : ${result.data.id} pw : ${result.data.pw}`
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    </script>
+</body>
+
+</html>
