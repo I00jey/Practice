@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- cdn -->
+    <script src="/socket.io/socket.io.js"></script>
+    <title>main</title>
+</head>
+
+<body>
+    <form>
+        <button type="button" onclick="gotoChat()">채팅하기</button>
+    </form>
+
+    <script>
+        const yourname = 'yourname'
+        const myname = 'myname'
+        params = {
+            yourname: yourname,
+            myname: myname
+        }
+        function gotoChat() {
+            axios({
+                method: 'get',
+                params: {
+                    yourname: yourname,
+                    myname: myname
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
