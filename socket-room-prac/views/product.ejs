@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>게시물</title>
+</head>
+
+<body>
+    <input type="hidden" value="myid" id="myid">
+    <input type="hidden" value="yourid" id="yourid">
+    <img src="" alt="게시물 사진">
+    <button type="button" onclick="gotoChat()">채팅하기</button>
+</body>
+<script>
+    const yourid = document.getElementById('yourid').value
+    const myid = document.getElementById('myid').value
+    function gotoChat() {
+        window.location.href = `/chatrooms?myid=${myid}&yourid=${yourid}`
+    }
+</script>
+
+</html>

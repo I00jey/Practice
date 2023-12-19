@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/chat.css" />
+    <!--  CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>북적북적</title>
+</head>
+
+<body>
+    <div class="join-container">
+        <header class="join-header">
+            <h1>북적북적</h1>
+        </header>
+        <main class="join-main">
+            <form name="chatrooms">
+                <input type="text" id="username" name="username" placeholder="채팅하고 싶은 상대방 아이디를 입력하시오" />
+                <button type="button" onclick="createChatRoom()" class="btn">채팅방 생성</button>
+
+                <% mychatrooms.forEach(room=> { %>
+                    <button class="form-control" type="button" onclick="gotoChatRoom('<%= room._id %>')">
+                        <%= room.yourid %>와의 채팅
+                    </button>
+                    <% }); %>
+
+
+            </form>
+        </main>
+    </div>
+    <script>
+        const myid = 'myid'
+        const form = document.forms['chatrooms']
+        function createChatRoom() {
+            const yourid = document.getElementById("username").value
+            console.log(yourid);
+            axios({
+                method: 'post',
+                data: { myid, yourid },
+                url: '/chatrooms'
+            }).then((result) => {
+                console.log(result.data.newchatroom.yourid);
+                const newroomid = result.data.newchatroom._id
+                const newyourid = result.data.newchatroom.yourid
+                const newbtnhtml = `<button class="form-control" type="button" onclick="gotoChatRoom(${newroomid})">${newyourid}와의 채팅</button>`
+                form.insertAdjacentHTML("beforeend", newbtnhtml);
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
+        function gotoChatRoom(roomid) {
+            window.location.href = `/chats?roomid=${roomid}`
+        }
+    </script>
+</body>
+
+</html>

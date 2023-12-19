@@ -1,12 +1,18 @@
-const Announcement = "공지";
 const socketio = require("socket.io");
+const Announcement = "공지";
 
+const yoursocketid = "";
+const mysocketid = "";
 module.exports = function (server) {
     // socket.io를 http 서버에 연결
     const io = socketio(server);
     // socket 연결
     io.on("connection", (socket) => {
         console.log("socket 연결 > ", socket.id);
+
+        myid = getRoomUsers(user.room)[0].id;
+        yourid = getRoomUsers(user.room)[1].id;
+
         socket.on("joinRoom", ({ username, room }) => {
             const user = userJoin(socket.id, username, room);
             socket.join(user.room);
@@ -50,9 +56,14 @@ module.exports = function (server) {
                 console.log("삭제할 username >", user.username);
             }
         });
+        return socket.id;
     });
 };
 
+module.exports = {
+    yoursocketid,
+    mysocketid,
+};
 // ----------------------------------
 // 채팅 관련 함수
 const users = [];
