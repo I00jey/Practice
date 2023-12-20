@@ -1,21 +1,25 @@
-const socketio = require("socket.io");
 const Announcement = "공지";
-
-const yoursocketid = "";
-const mysocketid = "";
-module.exports = function (server) {
-    // socket.io를 http 서버에 연결
-    const io = socketio(server);
+module.exports = function (io) {
     // socket 연결
     io.on("connection", (socket) => {
+        console.log("Socket connection status:", socket.connected);
+
         console.log("socket 연결 > ", socket.id);
-
-        myid = getRoomUsers(user.room)[0].id;
-        yourid = getRoomUsers(user.room)[1].id;
-
         socket.on("joinRoom", ({ username, room }) => {
+            // Check if the room is full
+            let roomUsers = getRoomUsers(room);
+            console.log("현재 room 인원", roomUsers);
+            if (roomUsers.length >= 2) {
+                // Emit an event to the client to handle redirection
+                socket.emit("roomFull");
+                socket.disconnect();
+                console.log("Socket connection status:", socket.connected);
+                return;
+            }
             const user = userJoin(socket.id, username, room);
             socket.join(user.room);
+            roomUsers = getRoomUsers(user.room);
+            console.log("join후 room 인원", roomUsers);
 
             socket.emit(
                 "message",
@@ -56,14 +60,9 @@ module.exports = function (server) {
                 console.log("삭제할 username >", user.username);
             }
         });
-        return socket.id;
     });
 };
 
-module.exports = {
-    yoursocketid,
-    mysocketid,
-};
 // ----------------------------------
 // 채팅 관련 함수
 const users = [];
@@ -99,6 +98,6 @@ function formatMessage(name, text) {
     return {
         name,
         text,
-        time: moment().format("h:mm a"),
+        time: moment().format("YYYY-MM-DD h:mm a"),
     };
 }

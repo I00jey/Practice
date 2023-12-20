@@ -1,5 +1,6 @@
 const http = require("http");
 const express = require("express");
+const socketIO = require("socket.io");
 
 require("dotenv").config();
 const port = process.env.PORT;
@@ -11,7 +12,6 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 const router = require("./routes/Rindex");
 app.use("/", router);
 
@@ -20,6 +20,10 @@ dbconnect();
 
 // express 앱으로 http 서버를 생성
 const server = http.createServer(app);
+const io = socketIO(server);
+
+const socketController = require("./controller/socketController");
+socketController(io);
 
 server.listen(port, () => {
     console.log(`http://localhost:${port}`);

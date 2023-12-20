@@ -19,22 +19,30 @@
             <h1>북적북적</h1>
         </header>
         <main class="join-main">
-            <form name="chatrooms">
+            <div>
                 <input type="text" id="username" name="username" placeholder="채팅하고 싶은 상대방 아이디를 입력하시오" />
                 <button type="button" onclick="createChatRoom()" class="btn">채팅방 생성</button>
-
+            </div>
+            <form name="chatrooms">
                 <% mychatrooms.forEach(room=> { %>
-                    <button class="form-control" type="button" onclick="gotoChatRoom('<%= room._id %>')">
-                        <%= room.yourid %>와의 채팅
-                    </button>
-                    <% }); %>
-
-
+                    <% if (room.myid==myid) { %>
+                        <button class="form-control" type="button" onclick="gotoChatRoom('<%= room._id %>')">
+                            <%= room.yourid %>와의 채팅
+                                <br>
+                                <%= room.updatedAt %>
+                        </button>
+                        <% } else { %>
+                            <button class="form-control" type="button" onclick="gotoChatRoom('<%= room._id %>')">
+                                <%= room.myid %>와의 채팅
+                                    <br>
+                                    <%= room.updatedAt %>
+                            </button>
+                            <% }}); %>
             </form>
         </main>
     </div>
     <script>
-        const myid = 'myid'
+        const myid = '<%= myid %>'
         const form = document.forms['chatrooms']
         function createChatRoom() {
             const yourid = document.getElementById("username").value
@@ -45,16 +53,17 @@
                 url: '/chatrooms'
             }).then((result) => {
                 console.log(result.data.newchatroom.yourid);
-                const newroomid = result.data.newchatroom._id
-                const newyourid = result.data.newchatroom.yourid
-                const newbtnhtml = `<button class="form-control" type="button" onclick="gotoChatRoom(${newroomid})">${newyourid}와의 채팅</button>`
-                form.insertAdjacentHTML("beforeend", newbtnhtml);
+                const newchatroom = result.data.newchatroom
+                const newbtnhtml = `<button class="form-control" type="button" onclick="gotoChatRoom(${newchatroom._id})">${newchatroom.yourid}와의 채팅 <br>
+                                    ${newchatroom.updatedAt}</button>`
+                form.insertAdjacentHTML("afterbegin", newbtnhtml);
             }).catch((error) => {
                 console.log(error);
             })
         }
         function gotoChatRoom(roomid) {
-            window.location.href = `/chats?roomid=${roomid}`
+            console.log(roomid, myid);
+            window.location.href = `/chats?room=${roomid}&username=${myid}`
         }
     </script>
 </body>

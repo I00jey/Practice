@@ -3,19 +3,21 @@ const chatMessages = document.querySelector(".chat-messages");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
 
-const { username, yourname } = Qs.parse(location.search, {
+let { room, username } = Qs.parse(location.search, {
     ignoreQueryPrefix: true,
 });
-var chatUsers = [username, yourname].sort();
-let room = "";
-for (let i = 0; i < chatUsers.length; i++) {
-    room += chatUsers[i];
-}
-console.log(room);
+
+console.log(room, username);
 
 const socket = io();
 
 socket.emit("joinRoom", { username, room });
+
+socket.on("roomFull", () => {
+    alert(`채팅방 인원은 최대 2명입니다`);
+    socket.disconnect();
+    window.history.back();
+});
 
 socket.on("roomUsers", ({ room, users }) => {
     outputRoomName(room);
@@ -64,11 +66,7 @@ socket.on("updateUsers", (username) => {
 
 function exit() {
     console.log("나가기 버튼");
-    // socket.emit("disconnect");
 
-    // 서버에서 처리된 후 updateUsers 이벤트를 받아 사용자 목록을 업데이트함
-    // const deletelist = document.getElementById(`${username}`);
-    // deletelist.remove();
     socket.disconnect();
-    location.href = "/";
+    window.history.back();
 }
