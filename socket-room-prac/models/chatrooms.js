@@ -26,7 +26,6 @@ const chatroomsSchema = new Schema(
 );
 
 // 저장하기 전에 roomid를 _id 값으로 설정
-// Middleware to set roomid to _id before saving
 // chatroomsSchema.pre("save", function (next) {
 //     this.roomid = this._id;
 //     next();

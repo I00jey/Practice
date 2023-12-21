@@ -42,17 +42,22 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="/static/chat.js"></script>
     <script>
-        room, username = Qs.parse(location.search, {
+        const { roomid, userid } = Qs.parse(location.search, {
             ignoreQueryPrefix: true,
         });
-        const msg = document.getElementById("msg")
         function sendMsg() {
+            const msg = document.getElementById("msg")
+            socket.emit("chatMessage", msg.value);
+
+            msg.value = "";
+            msg.focus();
+
             axios({
                 method: "post",
                 url: "/chats",
                 data: {
-                    room: room,
-                    username: username,
+                    room: roomid,
+                    username: userid,
                     msg: msg
                 }
             }).then((result) => {
